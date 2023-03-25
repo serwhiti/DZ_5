@@ -1,0 +1,60 @@
+# Напишите усовершенствованный калькулятор, который запрашивает у пользователя целое число и предлагает пять вариантов действий:
+# - вычислить сумму цифр,
+# - вычислить произведение цифр,
+# - найти минимальную цифру,
+# - найти максимальную цифру,
+# - завершить работу.
+# Каждое действие должно быть оформлено в виде функции.
+
+def summa(a,b):
+    result = a+b
+    return result
+def mult(a,b):
+    result = a*b
+    return result
+def minimum(a,b):
+    result = min(a,b)
+    return result
+def maximum(a,b):
+    result = max(a,b)
+    return result
+def calculate(a,b,operation):
+    result = 0
+
+    if operation == '+':
+        result = summa(a,b)
+    elif operation == '*':
+        result = mult(a,b)
+    elif operation == 'min':
+        result = minimum(a,b)
+    elif operation == 'max':
+        result = maximum(a,b)
+    elif operation == '0':
+        print('Завершение программы')
+    else:
+        print('Неизвестная операция')
+    return result
+    
+def ask_operation():
+   message = '''
+Пожалуйста, введите символ операции, которую вы хотите исполнить, а затем нажмите Enter:
++ : Сложение
+* : Умножение
+min: Минимальное число
+max: Максимальное число
+0: Выход
+Ваш выбор:
+   '''
+   operation = input(message)
+   return operation
+
+def run_calculator():
+    while True:
+        a=int(input('Введите первое число: '))
+        b=int(input('Введите второе число: '))
+        operation = ask_operation()
+        result = calculate(a,b,operation)
+        if operation == '0':
+            break
+        print('Результат вычислений: ',result)
+run_calculator()
